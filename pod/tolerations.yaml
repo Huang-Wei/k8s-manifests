@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pause
+spec:
+  containers:
+  - name: pause
+    image: k8s.gcr.io/pause:3.1
+  tolerations:
+  - effect: NoExecute
+    key: t1
+    operator: Exists
+    # tolerationSeconds: 120
+  - effect: NoSchedule
+    key: t1
+    operator: Exists
