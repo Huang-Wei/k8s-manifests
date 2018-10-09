@@ -1,0 +1,21 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: pause
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: foo
+            operator: Exists
+        topologyKey: region
+      - labelSelector:
+          matchExpressions:
+          - key: bar
+            operator: Exists
+        topologyKey: zone
+  containers:
+  - name: pause
+    image: k8s.gcr.io/pause:3.1
