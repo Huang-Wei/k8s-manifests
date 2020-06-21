@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc
+  labels:
+    # insert any desired labels to identify your claim
+    app: test
+spec:
+  storageClassName: retain
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      # The amount of the volume's storage to request
+      storage: 50Mi
