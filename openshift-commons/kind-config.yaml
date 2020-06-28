@@ -1,0 +1,24 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+networking:
+  ipFamily: ipv4
+# kubeadmConfigPatches:
+# - |
+#   kind: ClusterConfiguration
+#   metadata:
+#     name: config
+#   apiServer:
+#     extraArgs:
+#       "feature-gates": "EvenPodsSpread=true"
+#   scheduler:
+#     extraArgs:
+#       "feature-gates": "EvenPodsSpread=true"
+#   # controllerManager:
+#   #   extraArgs:
+#   #     "feature-gates": "FeatureGateName=true"
+nodes:
+# the control plane node
+- role: control-plane
+- role: worker
+- role: worker
+- role: worker
