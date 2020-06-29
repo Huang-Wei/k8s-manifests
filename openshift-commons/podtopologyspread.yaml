@@ -25,15 +25,13 @@ spec:
       #   labelSelector:
       #     matchLabels:
       #       app: pause
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: kubernetes.io/hostname
-                operator: NotIn
-                values:
-                - kind-control-plane
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:
+      #         - key: node-role.kubernetes.io/master
+      #           operator: DoesNotExist
       containers:
       - name: pause
         image: k8s.gcr.io/pause:3.2

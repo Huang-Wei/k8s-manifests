@@ -13,8 +13,9 @@ spec:
             values:
             - kind-worker3
       preferredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
+      - weight: 100
+        preference:
+          matchExpressions:
           - key: kubernetes.io/hostname
             operator: In
             values:

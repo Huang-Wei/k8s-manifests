@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pause
+  name: low-priority
 spec:
   replicas: 1
   selector:
