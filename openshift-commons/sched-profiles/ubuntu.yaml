@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubuntu
+  template:
+    metadata:
+      labels:
+        app: ubuntu
+    spec:
+      schedulerName: image-first
+      containers:
+      - name: ubuntu
+        image: ubuntu
+        # Wait forever
+        command: [ "/bin/bash", "-c", "--" ]
+        args: [ "while true; do sleep 3600; done;" ]

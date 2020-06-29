@@ -1,0 +1,33 @@
+# use v1beta1 in 1.19
+apiVersion: kubescheduler.config.k8s.io/v1alpha2
+kind: KubeSchedulerConfiguration
+clientConnection:
+  kubeconfig: /etc/kubernetes/scheduler.conf
+leaderElection:
+  leaderElect: false
+profiles:
+- schedulerName: default-scheduler
+- schedulerName: image-first
+  plugins:
+    score:
+      enabled:
+      - name: ImageLocality
+        weight: 50000
+      disabled:
+      - name: ImageLocality
+- schedulerName: binpack
+  plugins:
+    score:
+      enabled:
+      - name: NodeResourcesMostAllocated
+        weight: 50000
+      disabled:
+      - name: NodeResourcesLeastAllocated
+- schedulerName: skip-score
+  plugins:
+    preScore:
+      disabled:
+      - name: "*"
+    score:
+      disabled:
+      - name: "*"
